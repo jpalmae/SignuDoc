@@ -3,16 +3,17 @@ import type { ResolvedSettings } from "./settings.ts";
 
 // What an install calls itself.
 //
-// A neutral install (the default) carries the name of the organization that
-// runs it, links to that organization's own terms and privacy policy, and
-// says "Powered by SignuDoc" in the footer. Hosted mode (HOSTED_MODE=1) is
-// SignuDoc run as a public service: its own name, landing page and legal
-// pages. An install's own logo and color are not used there.
+// This branch is SixFirma, a SignuDoc fork: a neutral install (the default)
+// carries the name of the organization that runs it, links to that
+// organization's own terms and privacy policy, and says "Powered by SixFirma"
+// in the footer. Hosted mode (HOSTED_MODE=1) is the original SignuDoc run as
+// a public service: its own name, landing page and legal pages. An install's
+// own logo and color are not used there.
 
-export const SIGNUDOC_NAME = "SignuDoc";
-// The project's home is its repository. There is no SignuDoc-run site that
+export const PRODUCT_NAME = "SixFirma";
+// The project's home is its repository. There is no SixFirma-run site that
 // an install should send its visitors to, and no address there to write to.
-export const SIGNUDOC_URL = "https://github.com/NYLLON-SOFTWARE/SignuDoc";
+export const PRODUCT_URL = "https://github.com/jpalmae/SixFirma";
 
 /** Where the install's logo is served. Public: it is shown to signers. */
 export const BRAND_LOGO_PATH = "/api/brand/logo";
@@ -54,7 +55,7 @@ export type Branding = {
   termsUrl: string | null;
 };
 
-/** SignuDoc under its own name. Also what a page shows before it knows better. */
+/** The original SignuDoc under its own name, for hosted mode. Also what a page shows before it knows better. */
 export const HOSTED_BRANDING: Branding = {
   brandColor: null,
   contactUrl: "/contact",
@@ -62,7 +63,7 @@ export const HOSTED_BRANDING: Branding = {
   logoUrl: null,
   organizationName: null,
   privacyUrl: "/privacy",
-  productName: SIGNUDOC_NAME,
+  productName: "SignuDoc",
   signupAvailable: true,
   supportAddress: null,
   termsUrl: "/terms",
@@ -94,7 +95,7 @@ export function buildBranding(settings: ResolvedSettings): Branding {
         : buildBrandLogoPath(settings.logoVersion),
     organizationName,
     privacyUrl: settings.privacyUrl,
-    productName: organizationName ?? SIGNUDOC_NAME,
+    productName: organizationName ?? PRODUCT_NAME,
     signupAvailable,
     supportAddress: settings.supportAddress,
     termsUrl: settings.termsUrl,

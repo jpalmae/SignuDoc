@@ -1,4 +1,4 @@
-import { SIGNUDOC_NAME } from "../branding.ts";
+import { PRODUCT_NAME } from "../branding.ts";
 
 // Which addresses email is sent from and replied to.
 //
@@ -56,7 +56,7 @@ function cleanDisplayName(value: string | null): string {
     .trim()
     .slice(0, 80);
 
-  return cleaned || SIGNUDOC_NAME;
+  return cleaned || PRODUCT_NAME;
 }
 
 function hasDisplayName(value: string): boolean {
@@ -69,7 +69,7 @@ export function buildEmailAddresses(
 ): EmailAddresses {
   const configuredSender = settings.senderAddress?.trim() || null;
   const displayName = cleanDisplayName(
-    settings.hosted ? SIGNUDOC_NAME : settings.organizationName,
+    settings.hosted ? "SignuDoc" : settings.organizationName,
   );
   let senderAddress: string;
 
